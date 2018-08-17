@@ -1,0 +1,12 @@
+.balloon {
+  width: 70px;
+  height: 70px;
+  background: lightblue;
+  border: solid black 2px;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(
+    -50%,
+    -50%
+  ); //sorgt dafür, dass der Punkt genau mittig zum klick erscheint
+}
