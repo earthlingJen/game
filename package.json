@@ -10,14 +10,18 @@
     "bs": "browser-sync start --server docs/ --files docs/*.{css,html} --serveStatic node_modules",
     "sass": "node-sass src/scss/styles.scss docs/css/styles.css --output-style compressed",
     "sass-watch": "npm run sass -- -w src/scss",
-    "html": "run-p index imprint",
-    "html-watch": "watch 'npm run html' src --interval 0.1",
-    "index": "html-include-comment src/index.html docs/index.html",
-    "imprint": "html-include-comment src/imprint.html docs/imprint.html"
+    "html": "ejs-cli \"*.ejs\" --out docs/ -b src",
+    "html-watch": "watch 'npm run html' src --interval 0.1"
   },
   "license": "UNLICENSED",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "browser-sync": "2.24.6",
+    "ejs-cli": "^2.0.1",
     "html-include-comment": "0.0.10",
     "node-sass": "4.9.2",
     "npm-run-all": "4.1.3",
