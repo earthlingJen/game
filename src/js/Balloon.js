@@ -1,9 +1,11 @@
 export class Balloon {
-  constructor(x, y) {
+  constructor(x, y, countScore, countLives) {
     this.createElement(x, y)
     this.updatePosition()
     this.queueUpdate()
     this.removeBalloon()
+    this.countScore = countScore
+    this.countLives = countLives
   }
 
   createElement(x, y) {
@@ -28,6 +30,7 @@ export class Balloon {
 
       if (this.pos.y < 70) {
         this.destroy()
+        this.countLives()
       } else {
         this.queueUpdate()
       }
@@ -50,12 +53,10 @@ export class Balloon {
   }
 
   removeBalloon() {
-    this.score = 0
     this.el.addEventListener('click', event => {
       event.stopPropagation() //damit beim platzen lassen eines Ballons, kein neuer entsteht (eventListener vom Body "ausgeschaltet")
       this.destroy()
-      this.score = this.score++
-      console.log(this.score)
+      this.countScore()
     })
   }
 }
